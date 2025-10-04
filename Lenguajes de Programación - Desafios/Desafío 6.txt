@@ -1,0 +1,61 @@
+Desafío 6
+Crea una clase abstracta Personaje con atributos nombre y nivel. Define un método abstracto accionEspecial(). Implementa las clases Mago y Guerrero, cada una con su propia versión de accionEspecial().
+
+EJERCICIO: 
+
+public class Desafio6 {
+
+    abstract static class Personaje {
+        String nombre;
+        int nivel;
+
+        Personaje(String n, int l) {
+            nombre = n;
+            nivel = l;
+        }
+
+        abstract void accionEspecial();
+    }
+
+    static class Mago extends Personaje {
+        Mago(String n, int l) {
+            super(n, l);
+        }
+
+        @Override
+        void accionEspecial() {
+            // Mago lanza hechizo
+            System.out.println(nombre + " hace un hechizo nivel " + nivel);
+        }
+    }
+
+    static class Guerrero extends Personaje {
+        Guerrero(String n, int l) {
+            super(n, l);
+        }
+
+        @Override
+        void accionEspecial() {
+            // Guerrero ataca
+            System.out.println(nombre + " pega con espada nivel " + nivel);
+        }
+    }
+
+    public static void main(String[] args) {
+        Personaje miMago = new Mago("Gandalf", 5);
+        Personaje miGuerrero = new Guerrero("Conan", 7);
+
+        miMago.accionEspecial();
+        miGuerrero.accionEspecial();
+    }
+}
+
+
+Estrategia: 
+
+Para resolver este ejercicio, tuve que pensar en la clase abstracta personaje con los atributos nombre y nivel, definiendo el método abstracto accionEspecial(). Cree dos subclases - mago y guerrero, implementando su propia versión. Una estrategia fue analizar los objetos de cada clase y llamar al método para verificar que funcione. Algunos desafíos fueron; olvidar abstract, no usar extends correctamente, o no llamar a super() en el constructor. También sobrescribir accionEspecial() y no usar códigos claros. 
+
+Resultados:
+Gandalf hace un hechizo nivel 5
+Conan pega con espada nivel 7
+

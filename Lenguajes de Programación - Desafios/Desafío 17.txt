@@ -1,0 +1,70 @@
+Desafio 15
+Simula una carrera de Vehiculo (subclases Auto y Moto) en la que cada vehículo avanza una distancia aleatoria en cada turno. Usa un arreglo polimórfico para los competidores y determina el ganador al final de 5 rondas.
+
+
+Ejercicio: 
+
+import java.util.Random;
+
+abstract class Vehiculo {
+    String nombre;
+    int distancia;
+
+    Vehiculo(String nombre) {
+        this.nombre = nombre;
+        this.distancia = 0;
+    }
+
+    abstract void avanzar();
+}
+
+class Auto extends Vehiculo {
+    Auto(String nombre) {
+        super(nombre);
+    }
+
+    void avanzar() {
+        Random rnd = new Random();
+        distancia += rnd.nextInt(21) + 10; // 10 a 30 metros
+    }
+}
+
+class Moto extends Vehiculo {
+    Moto(String nombre) {
+        super(nombre);
+    }
+
+    void avanzar() {
+        Random rnd = new Random();
+        distancia += rnd.nextInt(26) + 5; // 5 a 30 metros
+    }
+}
+
+public class Main {  // El nombre debe coincidir con el del archivo: Main.java
+    public static void main(String[] args) {
+        Vehiculo[] competidores = { new Auto("Auto"), new Moto("Moto") };
+
+        for (int r = 1; r <= 5; r++) {
+            for (Vehiculo v : competidores) {
+                v.avanzar();
+                System.out.println(v.nombre + " avanzó a " + v.distancia + " m");
+            }
+            System.out.println("--- Fin de la ronda " + r + " ---");
+        }
+
+        // Determinar ganador
+        Vehiculo ganador = competidores[0];
+        for (Vehiculo v : competidores) {
+            if (v.distancia > ganador.distancia) {
+                ganador = v;
+            }
+        }
+
+        System.out.println("Ganador: " + ganador.nombre + " con " + ganador.distancia + " m");
+    }
+}
+
+
+Estrategia
+
+Como estrategia usa herencia y polimorfismo para poder representar el avance en distancias aleatorias de los vehículos. Desde otro enfoque, el ejercicio me permitió conocer y aprovechar las clases abstractas y arreglos polimórficos para trabajar de forma lógica. Lo que hice fue crear la clase abstracta Vehículo, subclases Auto y Moto, y un bucle para simular 5 rondas. Como resultado; determine el marcador con distancias comparando su nombre y recorridos. 

@@ -1,0 +1,58 @@
+Desafío 3
+
+Implementa un programa en Java que genere una secuencia de enteros al azar entre 0 y 10. El programa debe mostrar cada entero en pantalla junto con un mensaje que diga si es par o no lo es. Además, el programa debe ir sumando todos los valores impares que se vayan generando. El procesamiento debe detenerse en el momento en que la suma supere el valor 25. Al finalizar, el programa debe mostrar en pantalla la suma calculada.
+
+
+Ejercicio 1:
+
+
+import java.util.Random;
+
+public class Desafio3 {
+
+    public static void main(String[] args) {
+        
+        Random rnd = new Random();
+        int sumaImpares = 0;
+        
+        System.out.println("Generando numeros aleatorios entre 0 y 10...");
+        
+        while (sumaImpares <= 25) {
+            int numero = rnd.nextInt(11); // genera entre 0 y 10
+            
+            // verifico si es par o impar
+            if (numero % 2 == 0) {
+                System.out.println(numero + " es par");
+            } else {
+                System.out.println(numero + " es impar");
+                sumaImpares += numero;
+            }
+        }
+        
+        System.out.println("Suma final de impares: " + sumaImpares);
+    }
+}
+
+
+
+
+Estrategia: 
+
+Mi estrategia se basó en analizar el programa siguiendo una serie de pasos relacionados entre sí.
+Primero analicé los componentes que lo integran; por ejemplo, cómo sumar impares, las variables, el bucle (if-else) y funciones como rnd.nextInt.
+Después intenté entender el sentido del ejercicio, que era generar y sumar números hasta que se cumpliera cierta condición.
+Analicé el bucle, viendo cada número que salía y actualizando los valores en cada paso.
+Busqué errores; en ese momento revisé si había inconsistencias y la suma llegó a 26, lo cual coincide con la condición (<= 25).
+Finalmente intenté comprender qué había hecho, con qué fin y a dónde llevaba el ejercicio; fue un poco desafiante, porque varias veces tuve que interpretar de nuevo lo que estaba haciendo.
+El enfoque que utilicé fue top-down, entendiendo primero el objetivo general: generar números, identificar pares e impares y sumar los impares hasta llegar a 25. Al descomponer el problema en partes más pequeñas, pude verificar si cada número era par o impar, actualizar la suma y mostrar los mensajes correspondientes. Luego revisé los resultados para asegurarme de que todo estuviera correcto. De esta manera, resolví el ejercicio de forma ordenada y cumpliendo con cada función.
+En relación a las dificultades, se me hizo complejo asegurarme de que la suma solo incluyera los números impares y que el bucle se detuviera exactamente al superar 25, revisando cada paso para evitar errores.
+
+
+RESPUESTAS: 
+
+Números aleatorios generados entre 0 y 10.
+7 es impar
+7 es impar
+3 es impar
+9 es impar
+Suma final de impares: 26
